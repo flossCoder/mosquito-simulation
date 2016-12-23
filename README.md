@@ -18,33 +18,40 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 For the GNU GPL 3 see file LICENSE.
 
 This software requires the following programs:
-	- Python 3.5.1
-	- PostgreSQL 9.5.3
-	- PostGIS 2.2
-	- Psycopg 2.6.2
-	- doxygen (optional for the documentation)
+	* Python 3.5.1
+	* PostgreSQL 9.5.3
+	* PostGIS 2.2
+	* Psycopg 2.6.2
+	* doxygen (optional for the documentation)
 
 The project contains following folders:
-	- run Contains some files for testing. This tests save and load some CSV-files.
+	* run Contains some files for testing. This tests save and load some CSV-files.
 			That requires a file tree somewhere on your machine:
+			
 			/root
+			
 				/applicationTest
+				
 				/benchmarkCA
+				
 				/benchmarkDB
+				
 				/dbTestOutput
+				
 				/input (contains some input CSV-file)
-				/malcamTest
+				
 				/output
+				
 			Make sure, that DIRECTORY in setupRun.py saves the path to the root.
 			An example file tree (containing the input CSV-files) can be found in
 			folder tree.
 			Furthermore setupRun.py saves parameter for the database like the name
 			of the user. Make sure, that the parameter values are valid.
-	- src The source code of the project.
-	- test The unittest of the project. Some tests may save or load CSV-files.
+	* src The source code of the project.
+	* test The unittest of the project. Some tests may save or load CSV-files.
 			Ensure, that DIRECTORY in setupTests.py is valid.
 			Furthermore setupTests.py saves parameter for the database like the name
 			of the user. Make sure, that the parameter values are valid.
-	- doc The documentation generated with doxygen. And the used Doxyfile.
-	- tree An example file tree for the tests in folder run containing some required
+	* doc The documentation generated with doxygen. And the used Doxyfile.
+	* tree An example file tree for the tests in folder run containing some required
 			input CSV-files.
