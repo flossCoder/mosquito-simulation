@@ -99,13 +99,25 @@ with open(file, 'a', newline = '') as csvfile:
         dbData.loadStep(day, width, height)
         timeLoadDB = clock() - timeLoadDB
         
+        # load a single cell CSV
+        timeLoadCellCSV = clock()
+        dbData.loadCell(day, [15, 8])
+        timeLoadCellCSV = clock() - timeLoadCellCSV
+        
+        # load a single cell DB
+        timeLoadCellDB = clock()
+        dbData.loadCell(day, [15, 8])
+        timeLoadCellDB = clock() - timeLoadCellDB
+        
         # save measured values
-        data.writerow([day, timeSaveCSV, timeLoadCSV, timeSaveDB, timeLoadDB])
-        print("day: %i save CSV: %f load CSV: %f save DB: %f load DB: %f" % (day,
-                                                                              timeSaveCSV,
-                                                                              timeLoadCSV,
-                                                                              timeSaveDB,
-                                                                              timeLoadDB))
+        data.writerow([day, timeSaveCSV, timeLoadCSV, timeSaveDB, timeLoadDB, timeLoadCellCSV, timeLoadCellDB])
+        print("day: %i save CSV: %f load CSV: %f save DB: %f load DB: %f load cell CSV: %f load cell DB: %f" % (day,
+                                                                                                                timeSaveCSV,
+                                                                                                                timeLoadCSV,
+                                                                                                                timeSaveDB,
+                                                                                                                timeLoadDB,
+                                                                                                                timeLoadCellCSV,
+                                                                                                                timeLoadCellDB))
         
     # clean up
     # remove test.csv

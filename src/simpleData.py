@@ -72,7 +72,7 @@ class SimpleData(AbstractData):
             data = csv.reader(csvfile, delimiter = ",")
             for row in data:
                 coordinates = self._coordinateTransformer.calcInnerCoordinate(int(row[1]),
-                                                                             int(row[2]))
+                                                                              int(row[2]))
                 if (int(row[0]) == day): # correct day
                     step[coordinates[XINDEX]][coordinates[YINDEX]][0] = int(row[3]) # adults
                     step[coordinates[XINDEX]][coordinates[YINDEX]][1] = int(row[4]) # larvae
@@ -83,3 +83,21 @@ class SimpleData(AbstractData):
         if not(opened): # no row of the CSV file fitted to the given day
             raise Exception("No entries for day = %i." % (day))
         return step
+    
+    ## Open a single cell.
+    #
+    # @param day of simulation to load
+    # @param coordinates of the cell to load
+    #
+    # @return state of the given cell [adults, larvae]
+    #
+    # @exception invalid given day
+    def loadCell(self, day, coordinates):
+        with open("%s/%s.csv" % (self.__directory, self._name), 'r', newline = '') as csvfile:
+            data = csv.reader(csvfile, delimiter = ",")
+            for row in data:
+                coordinates = self._coordinateTransformer.calcInnerCoordinate(int(row[1]),
+                                                                             int(row[2]))
+                if ((int(row[0]) == day) & (int(row[1] == coordinates[0])) & (int(row[2]) == coordinates[1])): # correct day and cell
+                    return [row[3], row[4]]
+        raise Exception("No entries for day = %i." % (day))

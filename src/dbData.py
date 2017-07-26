@@ -119,6 +119,24 @@ class DBData(AbstractData):
         # return the result
         return step
     
+    ## Open a single cell.
+    #
+    # @param day of simulation to load
+    # @param coordinates of the cell to load
+    #
+    # @return state of the given cell [adults, larvae]
+    #
+    # @exception invalid given day
+    def loadCell(self, day, coordinates):
+        # open the connection
+        self.__openConnection()
+        if not(self.__existsDay(day)):
+            raise Exception("No entries for day = %i." % (day))
+        # load the cell
+        cell = self.__loadCell(day, coordinates)
+        # close the database connection
+        self.__closeConnection()
+        return cell
     
     # private internal functions
     
