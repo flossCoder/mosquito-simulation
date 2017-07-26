@@ -101,7 +101,7 @@ with open(file, 'a', newline = '') as csvfile:
         
         # load a single cell CSV
         timeLoadCellCSV = clock()
-        dbData.loadCell(day, [15, 8])
+        dbData.loadCell(day, [15, 8]) # make sure this cell exists!
         timeLoadCellCSV = clock() - timeLoadCellCSV
         
         # load a single cell DB
